@@ -9,22 +9,27 @@ import {
     Grid,
     TextField
 } from "@material-ui/core";
-import {useFormik} from "formik";
-import {loginTC} from "./auth-reducer";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../app/store";
+import {FormikHelpers, useFormik} from "formik";
+import {useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
+import {useActions, useAppDispatch} from "../../utils/redux-utils";
+import {authActions, authSelectors} from "./index";
 
 type FormikErrorType = {
     email?: string
     password?: string
     rememberMe?: boolean
 }
-export const Login = () => {
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state=>state.auth.isLoggedIn)
-   // const {isLoggedIn} = useSelector(selectAuthStore)
+type FormikFormType = {
+    email: string
+    password: string
+    rememberMe: boolean
+}
 
-    const dispatch = useDispatch()
+export const Login = () => {
+    const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn)
+    const {login} = useActions(authActions)
+    const dispatch = useAppDispatch()
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -33,11 +38,11 @@ export const Login = () => {
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
-            if (!values.email) {
+            /*if (!values.email) {
                 errors.email = 'email is required';
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 errors.email = 'Invalid email address';
-            }
+            }*/
             if (!values.password) {
                 errors.password = 'password is required';
             } else if (values.password.length <= 2) {
@@ -45,13 +50,18 @@ export const Login = () => {
             }
             return errors;
         },
-        onSubmit: values => {
-            debugger
-            // alert(JSON.stringify(values))
-            dispatch(loginTC(values))
-            formik.resetForm()
+        onSubmit: async (values: FormikFormType, formikHelpers: FormikHelpers<FormikFormType>) => {
+            const action = await dispatch(login(values))
+            if (login.rejected.match(action)) {
+                if (action.payload?.fieldsErrors?.length) {
+                    const error = action.payload?.fieldsErrors[0]
+                    formikHelpers.setFieldError(error.field, error.error)
+                    debugger
+                }
+            }
         }
     })
+
 
     if (isLoggedIn) {
         return <Redirect to={'/'}/>

@@ -1,14 +1,13 @@
-import {tasksReducer} from '../features/TodolistsList/tasks-reducer';
-import {todolistsReducer} from '../features/TodolistsList/todolists-reducer';
-import {applyMiddleware, combineReducers, createStore} from 'redux'
+import {combineReducers} from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import {appReducer} from './app-reducer'
-import {authReducer} from "../features/Login/auth-reducer";
 import {configureStore} from "@reduxjs/toolkit";
+import {appReducer} from "../features/Application";
+import {tasksReducer, todolistsReducer} from "../features/TodolistsList";
+import {authReducer} from "../features/Auth";
 
 // объединяя reducer-ы с помощью combineReducers,
 // мы задаём структуру нашего единственного объекта-состояния
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     tasks: tasksReducer,
     todolists: todolistsReducer,
     app: appReducer,
@@ -21,7 +20,6 @@ export const store = configureStore({
 })
 //export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 // определить автоматически тип всего объекта состояния
-export type AppRootStateType = ReturnType<typeof rootReducer>
 //interface IRootState extends AppRootStateType{}
 //лучше писать через селектор, чем чз mapStateToProps: мы можем применять функцию к возвращаемому значению (фильтр и проч.)
 //export const selectAuthStore  = (state: IRootState) => state.auth
