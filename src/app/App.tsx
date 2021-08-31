@@ -50,32 +50,30 @@ function App({demo = false}: PropsType) {
 
 
     return (
-        <HashRouter>
-            <div className="App">
-                <ErrorSnackbar/>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="menu">
-                            <Menu/>
-                        </IconButton>
-                        <Typography variant="h6">
-                            News
-                        </Typography>
-                        {isLoggedIn ? <Button color="inherit" onClick={LogoutHandler}>Log out</Button> : null}
-                    </Toolbar>
-                    {status === 'loading' && <LinearProgress/>}
-                </AppBar>
-                <Container fixed>
+        <div className="App">
+            <ErrorSnackbar/>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="menu">
+                        <Menu/>
+                    </IconButton>
+                    <Typography variant="h6">
+                        News
+                    </Typography>
+                    {isLoggedIn ? <Button color="inherit" onClick={LogoutHandler}>Log out</Button> : null}
+                </Toolbar>
+                {status === 'loading' && <LinearProgress/>}
+            </AppBar>
+            <Container fixed>
 
-                    <Switch>
-                        <Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>
-                        <Route path={'/login'} render={() => <Login/>}/>
-                        <Route path={'/404'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
-                        <Redirect from={'*'} to={'/404'}/>
-                    </Switch>
-                </Container>
-            </div>
-        </HashRouter>
+                <Switch>
+                    <Route exact path={'/'} render={() => <TodolistsList demo={demo}/>}/>
+                    <Route path={'/login'} render={() => <Login/>}/>
+                    <Route path={'/404'} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
+                    <Redirect from={'*'} to={'/404'}/>
+                </Switch>
+            </Container>
+        </div>
     )
 }
 
