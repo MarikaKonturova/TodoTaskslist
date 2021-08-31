@@ -15,11 +15,11 @@ import {TodolistsList} from '../features/TodolistsList'
 import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar'
 import {useSelector} from 'react-redux'
 import {authActions, Login} from "../features/Auth";
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
+import {HashRouter, Redirect, Route, Switch} from 'react-router-dom'
 import {appActions} from "../features/Application";
 import {selectIsInitialized, selectStatus} from "../features/Application/selectors";
 import {selectIsLoggedIn} from "../features/Auth/selectors";
-import {useActions, useAppDispatch} from "../utils/redux-utils";
+import {useActions} from "../utils/redux-utils";
 
 type PropsType = {
     demo?: boolean
@@ -50,7 +50,7 @@ function App({demo = false}: PropsType) {
 
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="App">
                 <ErrorSnackbar/>
                 <AppBar position="static">
@@ -75,7 +75,7 @@ function App({demo = false}: PropsType) {
                     </Switch>
                 </Container>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
