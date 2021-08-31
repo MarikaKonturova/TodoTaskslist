@@ -15,7 +15,7 @@ import {TodolistsList} from '../features/TodolistsList'
 import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar'
 import {useSelector} from 'react-redux'
 import {authActions, Login} from "../features/Auth";
-import {HashRouter, Redirect, Route, Switch} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
 import {appActions} from "../features/Application";
 import {selectIsInitialized, selectStatus} from "../features/Application/selectors";
 import {selectIsLoggedIn} from "../features/Auth/selectors";

@@ -1,7 +1,7 @@
 {
   "name": "todo-16",
   "version": "0.1.0",
-  "homepage": "https://marikamobile.github.io/TodoTaskslist/",
+  "homepage": "https://marikamobile.github.io/TodoTaskslist",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
