@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/TodoTaskslist/static/css/main.48934d97.chunk.css",
-    "main.js": "/TodoTaskslist/static/js/main.75bf966f.chunk.js",
-    "main.js.map": "/TodoTaskslist/static/js/main.75bf966f.chunk.js.map",
+    "main.js": "/TodoTaskslist/static/js/main.a086560a.chunk.js",
+    "main.js.map": "/TodoTaskslist/static/js/main.a086560a.chunk.js.map",
     "runtime-main.js": "/TodoTaskslist/static/js/runtime-main.dd66a845.js",
     "runtime-main.js.map": "/TodoTaskslist/static/js/runtime-main.dd66a845.js.map",
-    "static/js/2.3001a934.chunk.js": "/TodoTaskslist/static/js/2.3001a934.chunk.js",
-    "static/js/2.3001a934.chunk.js.map": "/TodoTaskslist/static/js/2.3001a934.chunk.js.map",
+    "static/js/2.0c853851.chunk.js": "/TodoTaskslist/static/js/2.0c853851.chunk.js",
+    "static/js/2.0c853851.chunk.js.map": "/TodoTaskslist/static/js/2.0c853851.chunk.js.map",
     "static/js/3.0bf8af73.chunk.js": "/TodoTaskslist/static/js/3.0bf8af73.chunk.js",
     "static/js/3.0bf8af73.chunk.js.map": "/TodoTaskslist/static/js/3.0bf8af73.chunk.js.map",
     "index.html": "/TodoTaskslist/index.html",
     "static/css/main.48934d97.chunk.css.map": "/TodoTaskslist/static/css/main.48934d97.chunk.css.map",
-    "static/js/2.3001a934.chunk.js.LICENSE.txt": "/TodoTaskslist/static/js/2.3001a934.chunk.js.LICENSE.txt"
+    "static/js/2.0c853851.chunk.js.LICENSE.txt": "/TodoTaskslist/static/js/2.0c853851.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dd66a845.js",
-    "static/js/2.3001a934.chunk.js",
+    "static/js/2.0c853851.chunk.js",
     "static/css/main.48934d97.chunk.css",
-    "static/js/main.75bf966f.chunk.js"
+    "static/js/main.a086560a.chunk.js"
   ]
 }
