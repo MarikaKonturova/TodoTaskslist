@@ -2,6 +2,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import {
   call,
   put,
+  PutEffect,
   takeEvery,
 } from "redux-saga/effects";
 import {
@@ -24,13 +25,13 @@ import {
   UpdateDomainTaskModelType,
   updateTaskAC,
 } from "./tasks-reducer";
-function* fetchTasksSaga({ todolistId }: ReturnType<typeof fetchTasks>) {
+export function* fetchTasksSaga({ todolistId, type }: ReturnType<typeof fetchTasks>) {
   yield put(setAppStatusAC("loading"));
-  const res: AxiosResponse<GetTasksResponse> = yield call(
+  const data: GetTasksResponse = yield call(
     todolistsAPI.getTasks,
     todolistId
   );
-  const tasks = res.data.items;
+  const tasks = data.items;
   yield put(setTasksAC(tasks, todolistId));
   yield put(setAppStatusAC("succeeded"));
 }
@@ -43,11 +44,10 @@ export const fetchTasks = (todolistId: string) => {
   };
 };
 
-function* removeTaskSaga({
+export function* removeTaskSaga({
   taskId,
   todolistId,
 }: ReturnType<typeof removeTask>) {
-  console.log("blabla");
   yield call(todolistsAPI.deleteTask, todolistId, taskId);
   const action = removeTaskAC(taskId, todolistId);
   yield put(action);
