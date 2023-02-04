@@ -7,11 +7,12 @@ import {
     FilterValuesType,
     removeTodolist,
     TodolistDomainType,
-    todolistsReducer
+    
 } from "../features/TodolistsList/todolists-reducer";
 import {TodolistType} from "../api/todolists-api";
 import {RequestStatusType} from "../features/Application/application-reducer";
 import {v1} from 'uuid'
+import { todolistsReducer } from "../features/TodolistsList";
 
 let todolistId1: string
 let todolistId2: string
@@ -74,7 +75,7 @@ test('correct filter of todolist should be changed', () => {
 })
 test('todolists should be added', () => {
 
-    const action = fetchTodolists.fulfilled({todolists: startState}, 'requestId')
+    const action = fetchTodolists.fulfilled({todolists: startState}, 'requestId', undefined)
 
     const endState = todolistsReducer([], action)
 
