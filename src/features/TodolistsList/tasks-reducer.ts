@@ -169,7 +169,7 @@ export const slice = createSlice({
   },
 });
 
-// types
+
 export type UpdateDomainTaskModelType = {
   title?: string;
   description?: string;

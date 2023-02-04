@@ -11,24 +11,23 @@ import { ThunkError } from "../../utils/types";
 import { AxiosError } from "axios";
 
 const { setAppStatus } = appActions;
-export const fetchTodolists = createAsyncThunk<
-  { todolists: TodolistType[] },
-  undefined,
-  ThunkError
->("todolist/fetchTodolists", async (_, thunkAPI) => {
-  thunkAPI.dispatch(setAppStatus({ status: "loading" }));
-  try {
-    const res = await todolistsAPI.getTodolists();
-    const todolists = res.data;
-    thunkAPI.dispatch(setAppStatus({ status: "succeeded" }));
-    return { todolists };
-  } catch (error) {
-    handleServerNetworkError(error as AxiosError, thunkAPI);
-    return thunkAPI.rejectWithValue({
-      errors: ["Some error occurred"],
-    });
+export const fetchTodolists = createAsyncThunk(
+  "todolist/fetchTodolists",
+  async (_, thunkAPI) => {
+    thunkAPI.dispatch(setAppStatus({ status: "loading" }));
+    try {
+      const res = await todolistsAPI.getTodolists();
+      const todolists = res.data;
+      thunkAPI.dispatch(setAppStatus({ status: "succeeded" }));
+      return { todolists };
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError, thunkAPI);
+      return thunkAPI.rejectWithValue({
+        errors: ["Some error occurred"],
+      });
+    }
   }
-});
+);
 export const removeTodolist = createAsyncThunk<
   { id: string },
   string,
@@ -152,7 +151,6 @@ export const slice = createSlice({
 
 export const { changeTodolistEntityStatus, changeTodolistFilter } =
   slice.actions;
-// types
 
 export type FilterValuesType = "all" | "active" | "completed";
 export type TodolistDomainType = TodolistType & {

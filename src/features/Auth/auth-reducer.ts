@@ -14,7 +14,7 @@ const initialState = {
 };
 const { setAppStatus } = appActions;
 
-// thunks
+
 export const login = createAsyncThunk<
   { idLoggedIn: boolean },
   UserLoginType,
